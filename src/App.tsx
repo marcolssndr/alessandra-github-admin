@@ -4,6 +4,7 @@ import { Login } from './components/pages/login/Login';
 import { TypeStudent } from './types/types';
 import { DettaglioStudente } from "./components/detail/DettaglioStudente"
 import { Navbar } from './components/navbar/Navbar';
+import { callApi } from "./components/callApi"
 function App() {
   //*******
   const myStudent: TypeStudent = {
@@ -14,14 +15,16 @@ function App() {
     repos: null
   }
 
-  //Variabile di stato seza Type
+ 
   const [student, setStudent] = useState(myStudent);
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar />  
+      <button onClick={(() => callApi(student))}>call</button>
       <Login />
       <DettaglioStudente {...student}/>
+    
     </div>
   );
 }
